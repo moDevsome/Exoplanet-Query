@@ -1,0 +1,161 @@
+body { overflow-x: hidden; }
+
+div#header {
+	background-image: url("./design/header-bg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-bottom: 18px;
+}
+div#github-link {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: auto;
+	font-size: 32px;
+	width: 40px;
+	height: 40px;
+	background-color: #eee;
+}
+div#github-link > svg {
+	width: 90px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	fill: #fff;
+}
+div#github-link > a {
+	width: 90px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	fill: #fff;
+}
+div#github-link > a {
+	width: auto;
+	top: 8px;
+	right: 8px;
+	text-align: center;
+	display: block;
+	position: absolute;
+	z-index: 10;
+}
+div#logo > h1 {
+	display: none;
+}
+div#logo > img {
+	width: 350px;
+	display: block;
+	margin: 18px auto 18px auto;
+}
+
+div.alert.alert-danger { position: relative; }
+span#flash-close {
+	cursor: pointer;
+	position: absolute;
+	top: 6px;
+	right: 6px;
+}
+
+div#main { margin-bottom: 40px; }
+
+div#filter-form {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 8px;
+	margin-bottom: 12px;
+}
+div#filter-form  > div#filter-form-control { padding: 0; }
+div#filter-form > div#filter-form-control > a {
+	padding-top: 8px; /** Vertical alignent with the text "Number of rows per page" **/
+}
+div#filter-form > div#filter-form-control > a#display-form-control { display: none; }
+div#filter-form > div#filter-form-control > a#hide-form-control { display: block; }
+div#filter-form.no-filter > div#filter-form-control > a#display-form-control { display: block; }
+div#filter-form.no-filter > div#filter-form-control > a#hide-form-control { display: none; }
+div#filter-form > div#filter-form-control > a {
+	font-size: 18px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+div#filter-form > form  { margin-top: 18px;  }
+div#filter-form.no-filter > form  {
+
+	-moz-transform-origin: top center;
+	-webkit-transform-origin: top center;
+	transform-origin: top center;
+
+	-moz-transform: scaleY(0);
+	-webkit-transform: scaleY(0);
+	transform: scaleY(0);
+
+	-moz-transition: transform 400ms;
+	-webkit-transition: transform 400ms;
+	transition: transform 400ms;
+}
+div#filter-form.no-filter > form  { display: none; }
+div#filter-form > form > div.row { margin-bottom: 22px;}
+div#filter-form > form, div#table-form > form { padding: 0; }
+
+div#filter-form > form div#hostname-field {
+	position: relative;
+}
+div#filter-form > form div#hostname-field > i {
+	display: block;
+	position: absolute;
+	bottom: 8px;
+	right: 22px;
+	color: #0d6efd;
+	cursor: pointer;
+}
+div#filter-form > form div#hostname-field > i:hover { color: #0a58ca; }
+
+button#select-columns { border-color: #ccc; }
+button#select-columns:hover { background-color: #eee; }
+
+div#row_count { text-align: right; }
+div#row_count > * {
+	display: inline-block;
+	width: auto;
+}
+div#row_count > label { margin-right: 14px; }
+
+button#form_filter_submit { margin-right: 16px; }
+
+span.col-ordering {
+	display: inline-block;
+	background-color: #eee;
+	color: #0d6efd;
+	margin-left: 4px;
+	cursor: pointer;
+	border: 1px solid #999;
+	height: 22px;
+	font-size: 14px;
+	width: 34px;
+	text-align: center;
+}
+span.col-ordering.col-ordering-sleep { border: 1px solid #999; color: #555; }
+td > a { text-decoration: none; }
+td > a:hover, td > a:focus { text-decoration: underline; }
+
+div#pagination > p { font-weight: 700; text-align: center; }
+div#pagination > p, div#pagination > nav {
+	padding: 0;
+	width: 100%;
+	margin: auto;
+}
+div#pagination > nav { margin-top: 18px; }
+div#pagination > nav > ul.pagination { margin: auto; width: fit-content; }
+
+div#footer {
+	background-color: rgb(22,13,34);
+	color: #fff;
+	padding-top: 18px;
+}
+div#footer > div#footer-inner { margin-bottom: 28px; }
+div.footer-col > p { margin-bottom: 0; }
+div#footer > div#footer-copyright > p {
+	margin: auto;
+	text-align: center;
+	padding: 8px 0 8px 0;
+	background-color: #000;
+}
