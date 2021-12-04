@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block body %}
+<div id="filter-form" class="row{{filter_state}}">
+    <div id="filter-form-control" class="col">
+        <a id="display-form-control" href="#"><i class="bi bi-chevron-down"></i> Display query filter</a>
+        <a id="hide-form-control" href="#"><i class="bi bi-chevron-up"></i> Hide query filter</a>
+    </div>
+    <div id="table-form" class="col">
+        <form method="post" action="table">
+            {{ form_row(table_form.row_count) }}
+            {{ form_row(table_form.current_page) }}
+            {{ form_row(table_form.current_order_col) }}
+            {{ form_row(table_form.current_order_dir) }}
+            {{ form_row(table_form._table_form_token) }}
+        </form>
+    </div>
+    <form method="post" action="filter">
+        <!-- First horizontal row -->
+        <div class="row align-items-start">
+            {{ form_row(filter_form.pl_name) }}
+        </div>
+        <!-- Second horizontal row -->
+        <div class="row align-items-start">
+            {{ form_row(filter_form.hostname) }}
+            {{ form_row(filter_form.disc_facility) }}
+            {{ form_row(filter_form.discoverymethod) }}
+            {{ form_row(filter_form.disc_year) }}
+            {{ form_row(filter_form._filter_form_token) }}
+        </div>
+        <!-- Buttons row -->
+        <div class="row align-items-start">
+            <div class="form-group">
+                <button type="submit" id="form-filter-submit" class="btn btn-primary"><i class="bi bi-search"></i> Apply filter</button>
+                <button type="button" id="form-filter-reset" class="btn btn-light" data-redirect="{{ filter_reset_redirect }}"><i class="bi bi-recycle"></i> Clear filter</button>
+            </div>
+            <div class="form-group">
+            </div>
+        </div>
+    </form>
+</div>
+{% if total_records <= 0 %}
+<div class="row">
+    <p>The current query has no result to return.</p>
+</div>
+{% else %}
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                {% for key, column in columns %}
+                <th {% if key is same as('disc_year') %}class="text-center"{% endif %}>
+                    <span class="col-label">{{ column }}</span>
+                    {% if current_order.col is same as(key) %}{# --1 checking if the column is the current sorting column #}
+                    {% if current_order.dir is same as('asc') %}{# --2 checking if the current dir #}
+                    <span class="col-ordering" data-ordering-col="{{ key }}" data-ordering-dir="desc" title="Click on the down arrow to sort the rows in the results panel in descending order on the values in the column.">
+                        <i class="bi bi-arrow-down"></i>
+                    </span>
+                    {% else %}
+                    <span class="col-ordering" data-ordering-col="{{ key }}" data-ordering-dir="asc" title="Click on the up arrow to sort the rows in the results panel in ascending order on the values in the column.">
+                        <i class="bi bi-arrow-up"></i>
+                    </span>
+                    {% endif %}{# end --2 #}
+                    {% else %}
+                    <span class="col-ordering col-ordering-sleep" data-ordering-col="{{ key }}" data-ordering-dir="asc" title="Click here to sort the rows with this column.">
+                        <i class="bi bi-arrow-up"></i>
+                        <i class="bi bi-arrow-down"></i>
+                    </span>
+                    {% endif %}{# end --1 #}
+                </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(records_iteration_offset, records_iteration_limit) %}
+            <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ records[i].pl_name }}</td>
+                <td><a title="See overview for the planet {{ records[i].hostname }}" href="https://exoplanetarchive.ipac.caltech.edu/overview/{{ records[i].hostname }}" target="_blank">{{ records[i].hostname }}</a></td>
+                <td>{{ records[i].disc_facility }}</td>
+                <td>{{ records[i].discoverymethod }}</td>
+                <td class="text-center">{{ records[i].disc_year }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div id="pagination" class="row">
+    <p>Total records : {{ total_records }}, Total pages : {{ total_page }}</p>
+    {% if total_page > 1 %}
+    <nav aria-label="Pagination">
+        <ul class="pagination">
+            {% if total_page > 24 %}
+            <li class="page-item{% if current_page < 2 %} disabled{% endif %}">
+                <a class="page-link" href="#" aria-label="Previous" data-page="1">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">First</span>
+                </a>
+            </li>
+            {% endif %}
+            <li class="page-item{% if current_page < 2 %} disabled{% endif %}">
+                <a class="page-link" href="#" aria-label="Previous" data-page="{{ current_page - 1 }}">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Prev</span>
+                </a>
+            </li>
+            {% for p in range(start_page, end_page) %}
+            <li class="page-item{% if current_page == p %} disabled{% endif %}"><a class="page-link" href="#" data-page="{{ p }}">{{p}}</a></li>
+            {% endfor %}
+            {% if current_page < total_page %}
+            <li class="page-item{% if current_page >= total_page %} disabled{% endif %}">
+                <a class="page-link" href="#" aria-label="Next" data-page="{{ current_page + 1 }}">
+                    <span class="sr-only">Next</span>
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+            {% if total_page > 22 and current_page < total_page %}
+            <li class="page-item{% if current_page >= total_page %} disabled{% endif %}">
+                <a class="page-link" href="#" aria-label="Next" data-page="{{ total_page }}">
+                    <span class="sr-only">Last</span>
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

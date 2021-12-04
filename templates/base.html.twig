@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/bootstrap/icons-1.6.1/bootstrap-icons.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/style.css"/>
+        <link rel="icon" href="assets/design/ico.png"/>
+    </head>
+    <body>
+        <div id="header" class="row">
+            <div id="logo">
+                <h1>Exoplanet Query</h1>
+                <img src="assets/design/logo.png" alt="Exoplanet Query"/>
+            </div>
+            <div id="github-link">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <polygon
+                    transform="rotate(180,50,50)"
+                    points="0,100 0,0 100,100 " />
+                </svg>
+                <a href="https://github.com/moDevsome/Exoplanet-Query" title="See the project on Github"><i class="bi bi-github"></i></a>
+            </div>
+        </div>
+        <div id="main" class="container">
+            {% set flash_error = app.flashes('error') %}
+            {% if flash_error|length > 0 %}
+            <div class="row">
+                <div id="flash-error" class="alert alert-danger" role="alert">
+                    <ul>
+                    {% for message in flash_error %}
+                        <li class="flash-notice">
+                            {{ message }}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    <span id="flash-close"><i class="bi bi-x-circle-fill"></i></span>
+                </div>
+            </div>
+            {% endif %}
+            {% block body %}{% endblock %}
+        </div>
+        <div id="footer">
+            <div id="footer-inner" class="container">
+                <div class="row align-items-start">
+                    <div class="col footer-col">
+                        <h3>About</h3>
+                        <p>Since 1992 over 4,000 exoplanets have been discovered outside our solar system. The United States National Aeronautics and Space Administration (NASA) maintains a publicly accessible archive of the data collected on these in comma separated value (CSV) format.</p>
+                        <p><b>This realisation is a practical work <a href="https://github.com/florinpop17/app-ideas/blob/master/Projects/3-Advanced/NASA-Exoplanet-Query.md" title="Original user story">from this User story</a>.</b></p>
+                    </div>
+                    <div class="col footer-col">
+                        <h3>Credits</h3>
+                        <p>Header background by <a href="https://commons.wikimedia.org/wiki/User:Leviathan1983" title="Mathias Krumbholz">Mathias Krumbholz</a></p>
+                        <p>Logo draw by <a href="https://pixabay.com/fr/users/kevcio333-12587485/" title="kevcio333">Mkevcio333</a></p>
+                    </div>
+                </div>
+            </div>
+            <div id="footer-copyright" class="row">
+                <p>&copy; {{ copyright_date }}, Mickaël Outhier</p>
+            </div>
+        </div>
+        <script src="assets/app.js"></script>
+    </body>
+</html>

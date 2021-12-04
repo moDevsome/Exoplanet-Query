@@ -1,0 +1,14 @@
+{# @see https://www.w3schools.com/tags/att_input_list.asp #}
+{% block exoplanets_hostname_field_widget %}
+    {% if value|length > 0 %}
+    <input type="text" id="filter_hostname" name="filter[hostname]" class="form-control" value="{{ value }}" disabled="disabled"/>
+    <i title="Reset the Host Name query value" class="bi bi-x-lg" data-redirect="{{hostname_reset_redirect}}"></i>
+    {% else %}
+    <input list="filter_hostname" class="form-control" name="filter[hostname]">
+    <datalist id="filter_hostname">
+        {% for hostname in available_hostname %}
+        <option value="{{hostname}}">
+        {% endfor %}
+    </datalist>
+    {% endif %}
+{% endblock %}
