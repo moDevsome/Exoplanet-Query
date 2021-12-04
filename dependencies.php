@@ -56,12 +56,11 @@ function delete_dir(string $folder_path) : bool {
 
     }
 
-    return rmdir($folder_path);
+    return TRUE;
 
 }
 
 define('ROOT_DIR', dirname(__FILE__));
-
 echo "Getting Frontend Dependencies\r\n";
 echo "\r\n";
 
@@ -111,8 +110,6 @@ foreach($dependencies['bootstrap_ico'] as $bootstrap_ico_file) {
 
 }
 
-$node_directory = ROOT_DIR.DIRECTORY_SEPARATOR.'node_modules'.DIRECTORY_SEPARATOR;
-
 if(delete_dir($node_directory) === FALSE) {
 
     echo "\033[31mThe directory : ".$node_directory." has been not deleted.\033[37m\r\n";
@@ -129,3 +126,25 @@ $env_str.= PHP_EOL;
 $env_str.= '### Added by "dependencies.php". Define a custom redirect base if it not sent by the server  ###'.PHP_EOL;
 $env_str.= 'APP_REDIRECT_BASE=';
 file_put_contents(ROOT_DIR.DIRECTORY_SEPARATOR.'.env', $env_str);
+
+$node_directory = ROOT_DIR.DIRECTORY_SEPARATOR.'node_modules'.DIRECTORY_SEPARATOR;
+
+if(delete_dir($node_directory) === FALSE) {
+
+    echo "\033[31mThe directory : ".$node_directory." has been not deleted.\033[37m\r\n";
+
+}
+else {
+
+    if(rmdir($node_directory) === FALSE) {
+
+        echo "\033[31mThe directory : ".$node_directory." has been not deleted.\033[37m\r\n";
+
+    }
+    else {
+
+        echo "\033[32mThe directory : ".$node_directory." has been well deleted.\033[37m\r\n";
+
+    }
+
+}
