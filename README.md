@@ -1,2 +1,4 @@
 # Exoplanet-Query
-Small project wich running under Symfony
+Small project wich running under Symfony.
+
+The 
