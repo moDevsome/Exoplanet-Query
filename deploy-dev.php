@@ -132,8 +132,13 @@ else {
 
 $env_str = file_get_contents(ROOT_DIR.DIRECTORY_SEPARATOR.'.env');
 $env_str.= PHP_EOL;
-$env_str.= '### Added by "dependencies.php". Define a custom redirect base if it not sent by the server  ###'.PHP_EOL;
+$env_str.= '### Added by "deploy-dev.php". Define a custom redirect base if it not sent by the server  ###'.PHP_EOL;
 $env_str.= 'APP_REDIRECT_BASE=';
 file_put_contents(ROOT_DIR.DIRECTORY_SEPARATOR.'.env', $env_str);
 
-$node_directory = ROOT_DIR.DIRECTORY_SEPARATOR.'node_modules'.DIRECTORY_SEPARATOR;
+$app_files_folder = ROOT_DIR.DIRECTORY_SEPARATOR.'var'.DIRECTORY_SEPARATOR.'app_files';
+mkdir($app_files_folder);
+echo "\r\n";
+echo "\033[33mIMPORTANT, Last step !\033[37m\r\n";
+echo "\r\n";
+echo "You need to add the file \033[34m".$app_files_folder.DIRECTORY_SEPARATOR."DB.csv\033[37m, please see the github project page to know how to import this file.\r\n";
