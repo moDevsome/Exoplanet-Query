@@ -31,3 +31,9 @@ php deploy-dev.php
 2. Click on "Download table" button, then check "CSV Format" and click on "Download table" (green arrow) button
 3. Download the file and past it into the folder : Exoplanet-Query/var/app_files
 4. Rename the file to "DB.csv"
+
+### Requirements
+
+This app has been developed into the following web environement :
+* Apache 2.4.41
+* PHP 7.4.0
