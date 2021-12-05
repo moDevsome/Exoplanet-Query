@@ -2,19 +2,13 @@
 
 function moving($src, $dest) : bool {
 
-    echo str_ireplace(ROOT_DIR, "", "Moving ".$src." to ".$dest);
     if(rename($src, $dest) === FALSE) {
 
         echo "\033[31m => FAILED\033[37m\r\n";
         return FALSE;
 
     }
-    else {
-
-        echo "\033[32m => SUCCESS\033[37m\r\n";
-        return TRUE;
-
-    }
+    else { return TRUE; }
 
 }
 
