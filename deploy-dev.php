@@ -130,7 +130,7 @@ $env_str.= '### Added by "deploy-dev.php". Define a custom redirect base if it n
 $env_str.= 'APP_REDIRECT_BASE=';
 file_put_contents(ROOT_DIR.DIRECTORY_SEPARATOR.'.env', $env_str);
 
-rename(ROOT_DIR.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'htaccess', ROOT_DIR.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'.htaccess');
+rename(ROOT_DIR.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'htaccess.txt', ROOT_DIR.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'.htaccess');
 
 $app_files_folder = ROOT_DIR.DIRECTORY_SEPARATOR.'var'.DIRECTORY_SEPARATOR.'app_files';
 mkdir($app_files_folder);
