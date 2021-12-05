@@ -7,6 +7,8 @@ Since 1992 over 4,000 exoplanets have been discovered outside our solar system. 
 
 **This realisation is a practical work from [this User story](https://github.com/florinpop17/app-ideas/blob/master/Projects/3-Advanced/NASA-Exoplanet-Query.md).**
 
+[Online demonstration](http://exoplanets.mickael-outhier.fr/).
+
 ## How to work on the code
 
 ### Download and deploy the sources
