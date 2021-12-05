@@ -1,6 +1,12 @@
 # Exoplanet-Query
 Small project wich running under Symfony.
 
+## About
+
+Since 1992 over 4,000 exoplanets have been discovered outside our solar system. The United States National Aeronautics and Space Administration (NASA) maintains a publicly accessible archive of the data collected on these in comma separated value (CSV) format.
+
+**This realisation is a practical work from [this User story](https://github.com/florinpop17/app-ideas/blob/master/Projects/3-Advanced/NASA-Exoplanet-Query.md).**
+
 ## How to work on the code
 
 ### Download and deploy the sources
