@@ -1,0 +1,13 @@
+index:
+  path: /
+  controller: App\Controller\ExoplanetsController::index
+
+filter:
+  path: /filter
+  methods: POST
+  controller: App\Controller\ExoplanetsController::filter
+
+table:
+  path: /table
+  methods: POST
+  controller: App\Controller\ExoplanetsController::table
